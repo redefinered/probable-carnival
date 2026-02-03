@@ -1,0 +1,16 @@
+{
+  "name": "mac-storage-manager",
+  "version": "1.0.0",
+  "description": "Manage macOS storage: scan caches, Docker, dev tools, and safely free space",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["macos", "storage", "cleanup", "cache"],
+  "author": "",
+  "license": "MIT"
+}

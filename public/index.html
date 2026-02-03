@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>macOS Storage Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Storage Manager</h1>
+      <p class="subtitle">Scan and free space on your Mac</p>
+      <button type="button" class="btn btn-primary" id="scanBtn" aria-busy="false">
+        <span class="btn-text">Scan storage</span>
+      </button>
+    </header>
+
+    <main class="main">
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Scanning disk usage…</p>
+      </div>
+
+      <div id="summary" class="summary hidden">
+        <div class="summary-card">
+          <span class="summary-label">Total scanned</span>
+          <span class="summary-value" id="summaryTotal">—</span>
+        </div>
+      </div>
+
+      <section id="sections" class="sections hidden">
+        <!-- Filled by JS -->
+      </section>
+
+      <div id="empty" class="empty">
+        <p>Click <strong>Scan storage</strong> to see what’s using space in caches, Docker, and dev tools.</p>
+      </div>
+    </main>
+
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <div class="modal-box">
+        <h2 id="modalTitle" class="modal-title">Confirm</h2>
+        <p id="modalBody" class="modal-body"></p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="modalCancel">Cancel</button>
+          <button type="button" class="btn btn-danger" id="modalConfirm">Confirm</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>Only safe, reversible cleanups are offered. Quit Cursor before removing its backup file.</p>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
