@@ -24,6 +24,23 @@ Then open **http://localhost:3847** in your browser.
 
 No `npm install` needed — it uses only Node’s built-in modules.
 
+### Electron + React (macOS app)
+
+This branch includes a desktop app built with Electron and React (Vite).
+
+```bash
+npm install
+npm run electron:start
+```
+
+- **electron:start** — runs Vite dev server and opens the Electron window (hot reload).
+- **build:mac** — builds the React app and packages a macOS `.app` (and DMG) into `release/`.
+
+```bash
+npm run build:mac
+# → release/mac-storage-manager-1.0.0.dmg (and .app)
+```
+
 ## Requirements
 
 - Node.js 18+
