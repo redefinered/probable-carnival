@@ -3,6 +3,9 @@ name: Build macOS app
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: macos-latest
@@ -27,13 +30,20 @@ jobs:
         run: npm ci
 
       - name: Build macOS app
+        env:
+          # Skip code signing so build works without a cert on Actions
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
         run: npm run build:mac
+
+      - name: List release artifacts
+        run: ls -la release/
 
       - name: Create Release and upload DMG
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.tag }}
           name: Storage Manager ${{ steps.version.outputs.version }}
+          allow_updates: true
           files: |
             release/*.dmg
             release/*.zip

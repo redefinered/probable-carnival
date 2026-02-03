@@ -33,6 +33,7 @@
   "build": {
     "appId": "com.storage-manager.app",
     "productName": "Storage Manager",
+    "publish": null,
     "mac": {
       "category": "public.app-category.utilities",
       "target": ["dmg", "zip"],
