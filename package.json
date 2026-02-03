@@ -1,6 +1,6 @@
 {
   "name": "mac-storage-manager",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Manage macOS storage: scan caches, Docker, dev tools, and safely free space",
   "main": "electron/main.js",
   "scripts": {
