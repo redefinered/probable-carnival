@@ -1,6 +1,6 @@
-# macOS Storage Manager
+# Storage Manager (macOS)
 
-A local web app that scans your Mac’s storage (caches, Docker, dev tools) and lets you safely free space with one click.
+A macOS app that scans your Mac’s storage (caches, Docker, dev tools) and lets you safely free space with one click. Built with **Electron** and **React** (Vite).
 
 ## What it does
 
@@ -13,41 +13,48 @@ A local web app that scans your Mac’s storage (caches, Docker, dev tools) and 
   - **Cursor:** delete `state.vscdb.backup` (quit Cursor first)
   - **Xcode:** `xcrun simctl delete unavailable`
 
-## Run it
+## Run the app
+
+### Development (Electron + React)
 
 ```bash
-cd mac-storage-manager
-npm start
-```
-
-Then open **http://localhost:3847** in your browser.
-
-No `npm install` needed — it uses only Node’s built-in modules.
-
-### Electron + React (macOS app)
-
-This branch includes a desktop app built with Electron and React (Vite).
-
-```bash
+git clone git@github.com:redefinered/probable-carnival.git
+cd probable-carnival
 npm install
 npm run electron:start
 ```
 
-- **electron:start** — runs Vite dev server and opens the Electron window (hot reload).
-- **build:mac** — builds the React app and packages a macOS `.app` (and DMG) into `release/`.
+- Starts the Vite dev server and opens the Electron window.
+- Use **Scan storage** to run a full scan; cleanup buttons appear after a scan.
+
+### Build a macOS app (DMG / .app)
 
 ```bash
 npm run build:mac
-# → release/mac-storage-manager-1.0.0.dmg (and .app)
 ```
+
+Output is in **`release/`**:
+
+- **Storage Manager.app** — double-click to run.
+- **Storage Manager-1.0.0.dmg** — disk image for distribution.
+
+### Web version (optional)
+
+To run the lightweight web UI in your browser instead of the Electron app:
+
+```bash
+npm start
+```
+
+Then open **http://localhost:3847**. No `npm install` is required for the web version (Node only).
 
 ## Requirements
 
-- Node.js 18+
-- macOS (paths are for your home and `~/Library`)
+- **Node.js** 18+
+- **macOS** (paths target your home directory and `~/Library`)
 
 ## Safety
 
-- Only paths under your home directory are ever touched.
-- Destructive actions require a confirmation in the UI.
+- Only paths under your home directory are ever modified.
+- Every destructive action requires a confirmation in the UI.
 - Quit Cursor before removing its backup file.
